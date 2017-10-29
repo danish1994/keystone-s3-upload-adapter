@@ -1,0 +1,28 @@
+{
+  "name": "keystone-s3-upload-adapter",
+  "version": "1.0.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Danish Kamal",
+  "license": "ISC",
+  "dependencies": {
+    "keystone-storage-namefunctions": "^1.1.1",
+    "object-assign": "^4.1.1",
+    "s3": "git+https://github.com/danish1994/node-s3-client.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:danish1994/keystone-s3-upload-adapter.git"
+  },
+  "keywords": [
+    "aws",
+    "keystone",
+    "keystone-storage",
+    "keystonejs",
+    "s3",
+    "storage"
+  ]
+}
