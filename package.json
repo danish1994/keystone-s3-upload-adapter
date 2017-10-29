@@ -1,6 +1,6 @@
 {
   "name": "keystone-s3-upload-adapter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
