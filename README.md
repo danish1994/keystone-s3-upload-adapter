@@ -20,34 +20,37 @@ npm install --save keystone-s3-upload-adapter
 Configure the storage adapter:
 
 ```js
-var storage = new keystone.Storage({
-  adapter: require('keystone-s3-upload-adapter'),
-  s3: {
-    key: 's3-key', // required; defaults to process.env.S3_KEY
-    secret: 'secret', // required; defaults to process.env.S3_SECRET
-    bucket: 'mybucket', // required; defaults to process.env.S3_BUCKET
-    region: 'ap-southeast-2', // optional; defaults to process.env.S3_REGION, or if that's not specified, us-east-1
-    path: '/profilepics',
-    headers: {
-      'x-amz-acl': 'public-read', // add default headers; see below for details
+var s3Storage = new keystone.Storage({
+    adapter: require('keystone-s3-upload-adapter'),
+    s3: {
+        key: 's3-key', // required; defaults to process.env.S3_KEY
+        secret: 'secret', // required; defaults to process.env.S3_SECRET
+        bucket: 'bucket', // required; defaults to process.env.S3_BUCKET
+        region: 'region', // optional; defaults to process.env.S3_REGION, or if that's not specified, us-east-1
+        path: 'images',
+        headers: {
+            'x-amz-acl': 'public-read', // add default headers; see below for details
+        },
     },
-  },
-  schema: {
-    bucket: true, // optional; store the bucket the file was uploaded to in your db
-    etag: true, // optional; store the etag for the resource
-    path: true, // optional; store the path of the file in your db
-    url: true, // optional; generate & store a public URL
-  },
+    schema: {
+        bucket: true, // optional; store the bucket the file was uploaded to in your db
+        etag: true, // optional; store the etag for the resource
+        path: true, // optional; store the path of the file in your db
+        url: true, // optional; generate & store a public URL
+    },
 });
 ```
 
-Then use it as the storage provider for a File field:
+Use it as a type in Keystone Field (Example Below):
 
 ```js
-File.add({
-  name: { type: String },
-  file: { type: Types.File, storage: storage },
-});
+imageUpload: {
+        type: Types.File,
+        storage: s3Storage,
+        filename: function (item, file) {
+            return encodeURI(item._id + '-' + item.name);
+        },
+    },
 ```
 
 ### Options:
