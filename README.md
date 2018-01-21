@@ -1,5 +1,7 @@
 # S3-based storage adapter for KeystoneJS
 
+[![NPM](https://nodei.co/npm/keystone-s3-upload-adapter.png)](https://nodei.co/npm/keystone-s3-upload-adapter/)
+
 ### This is an alternative to the official KeystoneJS Adapter for `S3File` Upload. The main issue with that library is that it is based on `knox` which not up to date. So this library is an `aws-sdk` version of the same. The usage is exactly the same as of the original one.
 
 ### This also adds support for non US S3 Buckets as `knox` was not able to incorporate all of them.
