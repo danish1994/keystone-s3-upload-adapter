@@ -24,10 +24,10 @@ function S3Adapter(options, schema) {
         multipartUploadThreshold: 20971520, // this is the default (20 MB) 
         multipartUploadSize: 15728640, // this is the default (15 MB),
         s3Options: {
-            accessKeyId: options.key,
-            secretAccessKey: options.secret,
-            signatureVersion: 'v4',
-            region: options.region
+            accessKeyId: this.options.key,
+			secretAccessKey: this.options.secret,
+			signatureVersion: 'v4',
+			region: this.options.region
         }
     })
 
